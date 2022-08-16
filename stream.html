@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Realers Call</title>
+  </head>
+  <style>
+    body{
+      background-color: black;
+    }
+    input{
+      border: 2px solid goldenrod;
+      padding: 1.5rem;
+    }
+  </style>
+  <body>
+    <h2>Realers Call Cam</h2>
+    <div class=" w-full videos flex flex-col lg:flex-row space-x-6">
+      <span>
+        <h3>Host</h3>
+        <video class="w-full h-64" id="webcamVideo"  autoplay playsinline poster="https://assets.codepen.io/6093409/river.jpg" ></video>
+      </span>
+      <span>
+        <h3>Member</h3>
+        <video class="w-full h-64"  id="remoteVideo"  autoplay loop playsinline poster="https://assets.codepen.io/6093409/river.jpg" type="video/mp4"></video>
+      </span>
+
+
+
+    </div>
+<div class="flex flex-col lg:flex-row">
+  <div class="basis-1/2 items-center justify-center flex flex-col space-y-4">
+    <button id="webcamButton" class="inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out"> Start A New  Call</button>
+    <button id="callButton" class="inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out" disabled>Create A Call Link <link rel="stylesheet" href=""></button>
+  </div>
+
+<div class="basis-1/2">
+  <input id="callInput"  />
+  <div class="tooltip">
+    <button onclick="myFunction()" onmouseout="outFunc()" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+      <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+      Copy Call Link
+      </button>
+    </div><br>
+  <button class="inline-block mt-6 px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out"  id="answerButton" disabled>Answer Call</button>
+</div>
+</div>
+<div class="mt-8">
+  <button class="inline-block px-6 py-2.5 bg-orange-900 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" id="hangupButton" disabled>Hangup</button>
+</div>
+<!-- <input type="text" value="Hello World" id="myInput"> -->
+
+<script>
+function myFunction() {
+  var copyText = document.getElementById('callInput');
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+</script>
+    <script type="module" src="./main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>
